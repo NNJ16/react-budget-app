@@ -59,12 +59,12 @@ const MainAppShell = () => {
                     : theme.colors.gray[0],
               },
             })}
-            navbarOffsetBreakpoint="sm"
-            asideOffsetBreakpoint="sm"
+            navbarOffsetBreakpoint="lg"
+            asideOffsetBreakpoint="md"
             navbar={
               <Navbar
                 p="md"
-                hiddenBreakpoint="sm"
+                hiddenBreakpoint="lg"
                 hidden={!opened}
                 width={{ sm: 250, lg: 350 }}
               >
@@ -103,7 +103,7 @@ const MainAppShell = () => {
                 })}
               >
                 <div className="flex items-center justify-between h-full">
-                  <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                  <MediaQuery largerThan="lg" styles={{ display: "none" }}>
                     <Burger
                       opened={opened}
                       onClick={() => setOpened((o) => !o)}
