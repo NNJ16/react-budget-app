@@ -1,10 +1,7 @@
-import { useContext } from "react";
-import { SimpleGrid, Text } from "@mantine/core";
 import PageContainer from "../layout/PageContainer";
 import DasboardCard from "../components/DasboardCard";
 import HistorryCard from "../components/HistoryCard";
 import ChartCard from "../components/ChartCard";
-
 const HomePage = () => {
   return (
     <PageContainer>

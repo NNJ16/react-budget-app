@@ -20,6 +20,8 @@ import NavigationLink from "./NavigationLink";
 import DarkLightThemeButton from "./DarkLightThemeButton";
 import HomePage from "../pages/HomePage";
 import { useLocalStorage } from "@mantine/hooks";
+import AddExpensePage from "../pages/AddExpensePage";
+import AddBudgetPage from "../pages/AddBudgetPage";
 
 type HistoryElement = {
   id: string;
@@ -124,9 +126,8 @@ const MainAppShell = () => {
             {/* Handle Routing */}
             <Routes>
               <Route path="/" element={<HomePage />} />
-              {/* <Route path="/newExpense" element={<AddExpensePage />} />
-                <Route path="/newBudget" element={<AddBudgetPage />} />
-                <Route path="/categories" element={<DisplayCategoriesPage />} /> */}
+              <Route path="/newExpense" element={<AddExpensePage />} />
+              <Route path="/newBudget" element={<AddBudgetPage />} />
             </Routes>
           </AppShell>
         </BrowserRouter>

@@ -11,6 +11,9 @@ type NavigationLinkProps = {
 const NavigationLink = ({ icon, label, link }: NavigationLinkProps) => {
   return (
     <UnstyledButton
+      onClick={()=>{
+        
+      }}
       component={Link}
       to={link}
       sx={(theme) => ({

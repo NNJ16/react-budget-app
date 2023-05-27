@@ -11,7 +11,7 @@ import HistoryItem from "./HistoryItem";
 function HistorryCard() {
   return (
     <Card
-      className="h-full flex flex-col justify-between"
+      className=" h-[calc(100vh-220px)] flex flex-col justify-between"
       mx={5}
       my={10}
       shadow="sm"
@@ -40,6 +40,7 @@ function HistorryCard() {
           type="Income"
           key={1}
         />
+        
       </div>
       <Pagination size="sm" total={10} className="mt-5" />
     </Card>
