@@ -1,12 +1,19 @@
-import React from 'react';
-import './App.css';
+import { Paper } from "@mantine/core";
+import { MantineProvider } from "@mantine/core";
+import MainAppShell from "./components/MainAppShell";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <h1 className='bg-slate-500'>Hello</h1>
-    </div>
+    // Global styles
+    <MantineProvider
+      theme={{
+        fontFamily: "open-sans",
+        colorScheme: "dark",
+      }}
+    >
+      <Paper>
+        <MainAppShell />
+      </Paper>
+    </MantineProvider>
   );
 }
-
-export default App;
