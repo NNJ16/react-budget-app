@@ -7,25 +7,31 @@ import RecordContext from "../contexts/RecordContext";
 const AddToExpenses = () => {
   const [label, setLabel] = useState("");
   const [value, setValue] = useState(0);
-  const [date, setDate] = useState<any>(null);
+  const [date, setDate] = useState<any>(new Date());
 
   const [category, setCategory] = useState<string[]>([""]);
   const navigate = useNavigate();
 
   const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+    { value: "Shopping", label: "Shopping" },
+    { value: "Housing", label: "Housing" },
+    { value: "Transportation", label: "Transportation" },
+    { value: "Vehicle", label: "Vehicle" },
+    { value: "Entertainment", label: "Entertainment" },
+    { value: "Bill Payments", label: "Bill Payments" },
+    { value: "Health", label: "Health" },
+    { value: "Other Expenses", label: "Other Expenses" },
   ];
 
   const { addRecordElement } = useContext(RecordContext);
 
   const AddToExpenses = () => {
     if (label === "" || value <= 0 || Number.isNaN(value)) {
-      alert(
-        "Invalid Entries. Make sure the label is not empty and the amount is greater than zero."
-      );
+      alert("Invalid Entries. Make sure to fill the required fields.");
     } else {
+      if (!category[0]) {
+        category[0] = "Other Expenses";
+      }
       navigate("/");
       addRecordElement({
         label: label,

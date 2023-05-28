@@ -7,14 +7,17 @@ import RecordContext from "../contexts/RecordContext";
 const AddToBudget = () => {
   const [label, setLabel] = useState("");
   const [value, setValue] = useState(0);
-  const [date, setDate] = useState<any>(null);
-  
+  const [date, setDate] = useState<any>(new Date());
+
   const [category, setCategory] = useState<string[]>([""]);
 
   const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+    { value: "Wage, invoices", label: "Wage, invoices" },
+    { value: "Savings", label: "Savings" },
+    { value: "Investments", label: "Investments" },
+    { value: "Interests, dividends", label: "Interests, dividends" },
+    { value: "Refunds", label: "Refunds" },
+    { value: "Other Income", label: "Other Income" },
   ];
 
   const navigate = useNavigate();
@@ -24,9 +27,12 @@ const AddToBudget = () => {
   const AddToBudget = () => {
     if (label === "" || value <= 0 || Number.isNaN(value)) {
       alert(
-        "Invalid Entries. Make sure the label is not empty and the amount is greater than zero."
+        "Invalid Entries. Make sure to fill the required fields."
       );
     } else {
+      if(!category[0]){
+        category[0] = "Other Income"
+      }
       navigate("/");
       addRecordElement({
         label: label,
@@ -80,7 +86,7 @@ const AddToBudget = () => {
               : theme.colors.gray[9],
         })}
       >
-        Add a Category to Your Expense
+        Add a Category to Your Budget
       </Text>
       <MultiSelect
         className="w-full md:w-[40%]"
@@ -94,11 +100,7 @@ const AddToBudget = () => {
         onChange={setCategory}
         maxSelectedValues={1}
       />
-      <Button
-        variant="outline"
-        mt={20}
-        onClick={AddToBudget}
-      >
+      <Button variant="outline" mt={20} onClick={AddToBudget}>
         Add To Budget
       </Button>
     </div>
