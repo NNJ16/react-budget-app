@@ -52,7 +52,7 @@ const HomePage = () => {
             You have reached {expensePerc}% of your budget limit
           </Alert>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-0">
           <DasboardCard amount={budget} color="blue" label="Budget" />
           <DasboardCard amount={remaining} color="yellow" label="Remaining" />
           <DasboardCard amount={expense} color="pink" label="Expenses" />
