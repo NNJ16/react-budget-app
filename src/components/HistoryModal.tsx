@@ -35,23 +35,41 @@ const HistoryModal = ({
   const [label1, setLabel1] = useState("");
   const [value, setValue] = useState(0);
   const [date, setDate] = useState<any>(null);
+  const [options, setOptions] = useState<any>([]);
 
   const [category1, setCategory1] = useState<string[]>([""]);
+
+  const options1 = [
+    { value: "Wage, invoices", label: "Wage, invoices" },
+    { value: "Savings", label: "Savings" },
+    { value: "Investments", label: "Investments" },
+    { value: "Interests, dividends", label: "Interests, dividends" },
+    { value: "Refunds", label: "Refunds" },
+    { value: "Other Income", label: "Other Income" },
+  ];
+
+  const options2 = [
+    { value: "Shopping", label: "Shopping" },
+    { value: "Housing", label: "Housing" },
+    { value: "Transportation", label: "Transportation" },
+    { value: "Vehicle", label: "Vehicle" },
+    { value: "Entertainment", label: "Entertainment" },
+    { value: "Bill Payments", label: "Bill Payments" },
+    { value: "Health", label: "Health" },
+    { value: "Other Expenses", label: "Other Expenses" },
+  ];
 
   useEffect(() => {
     setLabel1(label);
     setValue(amount);
-    //setCategory1(category);
-    // console.log(dateCreated.getFullYear())
     setDate(new Date());
     setCategory1([category]);
+    if(type === "Income"){
+        setOptions(options1);
+    }else{
+        setOptions(options2);
+    }
   }, []);
-
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
 
   const deleteRecord = () => {
     deleteRecordElement(id);

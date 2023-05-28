@@ -26,24 +26,6 @@ function HistorryCard() {
           Transaction History
         </Text>
         <Divider my="sm" />
-        {/* <HistoryItem
-          amount={1000}
-          category="Entertaintment"
-          dateCreated="22/10/2023"
-          id="1"
-          label="Movie tickets"
-          type="Expense"
-          key={1}
-        />
-        <HistoryItem
-          amount={2000}
-          category="Salary"
-          dateCreated="22/10/2023"
-          id="1"
-          label="Salary"
-          type="Income"
-          key={1}
-        /> */}
         <ScrollArea
           type="always"
           className="h-full"
