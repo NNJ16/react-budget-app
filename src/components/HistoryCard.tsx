@@ -44,21 +44,25 @@ function HistorryCard() {
           type="Income"
           key={1}
         /> */}
-
-        {records.map((item) => {
-          console.log(item)
-          return (
-            <HistoryItem
-              key={item.id}
-              id={item.id}
-              label={item.label}
-              amount={item.amount}
-              type={item.type}
-              dateCreated={item.dateCreated}
-              category={item.category}
-            />
-          );
-        })}
+        <ScrollArea
+          type="always"
+          className="h-full"
+        >
+          {records.map((item) => {
+            console.log(item);
+            return (
+              <HistoryItem
+                key={item.id}
+                id={item.id}
+                label={item.label}
+                amount={item.amount}
+                type={item.type}
+                dateCreated={item.dateCreated}
+                category={item.category}
+              />
+            );
+          })}
+        </ScrollArea>
       </div>
       <Pagination size="sm" total={10} className="mt-5" />
     </Card>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, Text, ThemeIcon } from "@mantine/core";
-import { MdEditDocument} from "react-icons/md";
+import { MdEditDocument } from "react-icons/md";
+import HistoryModal from "./HistoryModal";
 
 type HistoryItemProps = {
   label: string;
@@ -25,6 +26,16 @@ const HistoryItem = ({
 
   return (
     <>
+      <HistoryModal
+        opened={opened}
+        setOpened={setOpened}
+        label={label}
+        amount={amount}
+        type={type}
+        dateCreated={dateCreated}
+        id={id}
+        category={category}
+      />
       <Card
         className="flex flex-row justify-between"
         my={5}
@@ -43,7 +54,11 @@ const HistoryItem = ({
             {type === "Income" ? "+" : "-"}
             LKR {amount}
           </Text>
-          <ThemeIcon className="cursor-pointer" variant="light" style={{ backgroundColor: "transparent" }}>
+          <ThemeIcon
+            className="cursor-pointer"
+            variant="light"
+            style={{ backgroundColor: "transparent" }}
+          >
             <MdEditDocument />
           </ThemeIcon>
         </div>
