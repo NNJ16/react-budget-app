@@ -23,6 +23,7 @@ import HomePage from "../pages/HomePage";
 import { useLocalStorage } from "@mantine/hooks";
 import AddExpensePage from "../pages/AddExpensePage";
 import AddBudgetPage from "../pages/AddBudgetPage";
+import ViewSpendingPage from "../pages/ViewSpendingPage";
 
 type HistoryElement = {
   id: string;
@@ -89,7 +90,7 @@ const MainAppShell = () => {
                 <NavigationLink
                   label="View Spending in Categories"
                   icon={<BsBarChartLine />}
-                  link="/categories"
+                  link="/viewExpenses"
                 />
               </Navbar>
             }
@@ -131,6 +132,7 @@ const MainAppShell = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/newExpense" element={<AddExpensePage />} />
               <Route path="/newBudget" element={<AddBudgetPage />} />
+              <Route path="/viewExpenses" element={<ViewSpendingPage />} />
             </Routes>
           </AppShell>
         </BrowserRouter>
