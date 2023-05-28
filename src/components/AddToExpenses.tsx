@@ -1,19 +1,42 @@
 import { Button, Divider, MultiSelect, Text, TextInput } from "@mantine/core";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
-type AvailableCategories = {
-  label: string;
-  value: string;
-  isused: string;
-};
+import { DateTimePicker } from "@mantine/dates";
+import RecordContext from "../contexts/RecordContext";
 
 const AddToExpenses = () => {
   const [label, setLabel] = useState("");
   const [value, setValue] = useState(0);
+  const [date, setDate] = useState<any>(null);
 
   const [category, setCategory] = useState<string[]>([""]);
   const navigate = useNavigate();
+
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
+
+  const { addRecordElement } = useContext(RecordContext);
+
+  const AddToExpenses = () => {
+    if (label === "" || value <= 0 || Number.isNaN(value)) {
+      alert(
+        "Invalid Entries. Make sure the label is not empty and the amount is greater than zero."
+      );
+    } else {
+      navigate("/");
+      addRecordElement({
+        label: label,
+        amount: value,
+        id: crypto.randomUUID(),
+        type: "Expense",
+        dateCreated: date,
+        category: category[0],
+      });
+    }
+  };
 
   return (
     <div>
@@ -35,6 +58,16 @@ const AddToExpenses = () => {
         label="Amount"
         withAsterisk
       />
+      <DateTimePicker
+        label="Pick date and time"
+        placeholder="Pick date and time"
+        className="w-full md:w-[40%]"
+        mt={20}
+        size="md"
+        defaultValue={new Date()}
+        value={date}
+        onChange={setDate}
+      />
       <Divider mt={30} mb={20} />
       <Text
         size="xl"
@@ -51,36 +84,20 @@ const AddToExpenses = () => {
       <MultiSelect
         className="w-full md:w-[40%]"
         mt={10}
-        data={[]}
+        data={options}
         label="Select a Category"
-        placeholder="Select a category or create a new one"
+        placeholder="Select a category"
         searchable
         creatable
         value={category}
         onChange={setCategory}
         maxSelectedValues={1}
-        getCreateLabel={(query) =>
-          `+ Create ${query[0].toUpperCase() + query.substring(1)}`
-        }
-        onCreate={(query) => {
-          const capQuery = query[0].toUpperCase() + query.substring(1);
-          const item = {
-            value: capQuery,
-            label: capQuery,
-            isused: "false",
-          };
-          return item;
-        }}
       />
 
       <div className="flex flex-row mt-5">
-        <Button variant="outline">
+        <Button variant="outline" onClick={AddToExpenses}>
           Add Expense
-        </Button>
-        {" "}
-        <Button className="ml-2" variant="outline" color="red" onClick={() => {}}>
-          Remove Category
-        </Button>
+        </Button>{" "}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { Paper } from "@mantine/core";
 import { MantineProvider } from "@mantine/core";
 import MainAppShell from "./components/MainAppShell";
+import { RecordContextProvider } from "./contexts/RecordContext";
 
 export default function App() {
   return (
@@ -12,7 +13,9 @@ export default function App() {
       }}
     >
       <Paper>
-        <MainAppShell />
+        <RecordContextProvider>
+          <MainAppShell />
+        </RecordContextProvider>
       </Paper>
     </MantineProvider>
   );

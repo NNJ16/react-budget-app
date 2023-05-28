@@ -1,6 +1,7 @@
 import {
   AppShell,
   Burger,
+  Button,
   ColorScheme,
   ColorSchemeProvider,
   Header,
@@ -116,7 +117,9 @@ const MainAppShell = () => {
                   </MediaQuery>
                   <div className="flex items-center h-full">
                     <CgCalculator />
-                    <Text ml={10}>My Expense Tracker</Text>
+                    <Text className="text-lg md:text-2xl" ml={10}>
+                      My Expense Tracker
+                    </Text>
                   </div>
                   <DarkLightThemeButton />
                 </div>

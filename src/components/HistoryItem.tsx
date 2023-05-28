@@ -7,7 +7,7 @@ type HistoryItemProps = {
   amount: number;
   type: string;
   id: string;
-  dateCreated: string;
+  dateCreated: Date;
   category: string;
 };
 

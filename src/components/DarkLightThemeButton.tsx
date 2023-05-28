@@ -9,6 +9,7 @@ const DarkLightThemeButton = () => {
 
   return (
     <ActionIcon
+      size="lg"
       variant="outline"
       color={dark ? "yellow" : "blue"}
       onClick={() => toggleColorScheme()}
